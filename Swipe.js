@@ -5,6 +5,9 @@ var blok = document.getElementById("blok");
 delta_x = 0;
 delta_y = 0;
 
+//nulwaarde van de blokken die inspawnen
+let spawn = 0
+
 //wanneer de muis wordt ingedrukt gaat het naar deze functie
 blok.onmousedown = savePosition;
 blok.addEventListener("onmousedown", savePosition, false);
@@ -20,7 +23,6 @@ function savePosition(event) {
   //aangeven positionering van het blok
   x_blok = blok.offsetLeft;
   y_blok = blok.offsetTop;
-  
   delta_x = x_blok - x;
   delta_y = y_blok - y;
   
@@ -45,10 +47,18 @@ function moveBlok(event) {
 
 function clearPosition() {
     // Wanneer de muis wordt losgelaten schiet het blok terug
-    new_x = 0;
+    new_x = 20;
     new_y = Math.random() * 100 + "px";  
     blok.style.top = new_y + "px";
     blok.style.left = new_x + "px";
     //laat het blok los wanneer de muis wordt losgelaten
     document.onmousemove = null; 
+
+    //als er drie keer gecleared wordt dan komt er een extra plaatje
+    if (spawn == 3){
+        addSection();
+        spawn = 0;
+    }
+    spawn = spawn + 1;
 }
+

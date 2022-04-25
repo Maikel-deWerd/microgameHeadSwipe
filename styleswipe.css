@@ -1,6 +1,14 @@
 #blok
+{   
+    width: 100px;
+    height: 100px;
+    cursor: move; 
+    position: absolute;
+}
+
+.img
 {
-border: 1px 
-solid #000; 
-cursor: move; position: absolute;
+    pointer-events: none;
+    width: 100px;
+    height: 100px;
 }
