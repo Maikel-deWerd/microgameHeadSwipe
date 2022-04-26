@@ -9,22 +9,22 @@ body {
     position: absolute;
 }
 
-.blok:nth-child(2) {
+#two {
     top: 120px;
     visibility: collapse;
 }
 
-.blok:nth-child(3) {
+#three {
     top: 240px;
     visibility: collapse;
 }
 
-.blok:nth-child(4) {
+#four {
     top: 360px;
     visibility: collapse;
 }
 
-.blok:nth-child(5) {
+#five {
     top: 480px;
     visibility: collapse;
 }

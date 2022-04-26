@@ -57,19 +57,19 @@ function Visible(){
   console.log(makeVisible);
   makeVisible++;
   if(makeVisible == 1){
-    console.log("11")
+    document.getElementById ("two").style.visibility = "visible"; 
   }
   if(makeVisible == 2){
-    console.log("22")
+    document.getElementById ("three").style.visibility = "visible";
   }
   if(makeVisible == 3){
-    console.log("33")
+    document.getElementById ("four").style.visibility = "visible";
   }
   if(makeVisible == 4){
-    console.log("44")
+    document.getElementById ("five").style.visibility = "visible";
   }
   if(makeVisible == 5){
-    console.log("55")
+    console.log("klebberman?")
   }
 }
 
