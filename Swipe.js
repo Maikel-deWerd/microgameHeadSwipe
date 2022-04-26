@@ -51,7 +51,25 @@ function clearPosition(event){
   element.removeEventListener("mousemove",moveBlok);
 }
 
+var makeVisible = 0;
+//Testen of je na 3x drukken makeVisible waarden kan aanpassen.
 function Visible(){
-  console.log("test");
+  console.log(makeVisible);
+  makeVisible++;
+  if(makeVisible == 1){
+    console.log("11")
+  }
+  if(makeVisible == 2){
+    console.log("22")
+  }
+  if(makeVisible == 3){
+    console.log("33")
+  }
+  if(makeVisible == 4){
+    console.log("44")
+  }
+  if(makeVisible == 5){
+    console.log("55")
+  }
 }
 
