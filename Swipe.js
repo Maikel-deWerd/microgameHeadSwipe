@@ -1,85 +1,57 @@
-//aangeven van de coordinaten
-var y = 0;
-var x = 0;
-let delta_x = 0;
-let delta_y = 0;
-
+//Voor elk blok dat wordt aangemaakt komt in de for loop
 let selector = document.querySelectorAll(".blok");
-
-
 for (let i = 0; i < selector.length; i++) {
-  //wanneer de muis wordt ingedrukt gaat het naar deze functie
-  selector[i].onmousedown = savePosition(selector[i]);
-  selector[i].addEventListener("onmousedown", savePosition, false);
-  //wanneer de muis wordt losgelaten gaat het naar deze functie
-  document.onmouseup = clearPosition;
+  //De funtie voor het blok wordt aangeroepen wanneer er op geklikt wordt
+  selector[i].addEventListener("mousedown",savePosition);
+  //De funtie voor het blok wordt aangeroepen wanneer de muis losgelaten wordt
+  selector[i].addEventListener("mouseup",clearPosition);
 }
   
-
-function savePosition(event) {
-  for (let i = 0; i < selector.length; i++) {
-    //kijkt naar de positie van het blok
-    if (event) {
-      x = event.pageX;
-      y = event.pageY;
-    }
-    console.log(delta_y - 8); //delta herkent het naar de tweede keer niet meer
-    //aangeven positionering van het blok
-    x_blok = selector[i].offsetLeft;
-    y_blok = selector[i].offsetTop;
-    delta_x = x_blok - x;
-    delta_y = y_blok - y;
-    
-    //wanneer de muis beweegt gaat het naar deze functie
-    document.onmousemove = moveBlok;
-    document.addEventListener("onmousemove", moveBlok, false);
-  }
-  
+function savePosition(event){
+  console.log("Locatie opslaan");
+  //aanmaken van een element waar geklikt wordt
+  let element=event.target;
+  let location=element.getBoundingClientRect();
+  //slaat de locatie van het plaatje op wanneer erop geklikt wordt
+  element.dataset.x=location.left;
+  element.dataset.y=location.top;  
+  //gaat verder naar deze functie
+  element.addEventListener("mousemove",moveBlok);
 }
 
-function moveBlok(event) {
-  for (let i = 0; i < selector.length; i++) {
-    //kijkt naar de positie waar het blok wordt gesleept
-    if (event) {
-      x = event.pageX;
-      y = event.pageY;
-    }
-
-    console.log(x)
-    console.log(y)
-
-    //nieuwe positie aangeven en opslaan van het blok
-    new_x = delta_x + x;
-    new_y = delta_y + y;
-
-    selector[i].style.top = new_y + "px";
-    selector[i].style.left = new_x + "px";
-
-    console.log(new_y)
-    console.log(new_x)
-  }
-  
+function moveBlok(event){  
+  console.log("Bewegen element"); 
+  //kijkt naar de beweging van de muis
+  let delta_x=event.movementX;
+  let delta_y=event.movementY; 
+  let element=event.target;
+  //nieuwe locatie aangeven waarnaar het plaatje beweegt
+  let location=element.getBoundingClientRect();  
+  console.log((location.left+delta_x),(location.left+delta_y));
+  element.style.left=(location.left+delta_x)+"px";
+  element.style.top=(location.top+delta_y)+"px";
 }
 
-//nulwaarde van de blokken die inspawnen
-let spawn = 0
-
-function clearPosition() {
-  for (let i = 0; i < selector.length; i++) {
-    // Wanneer de muis wordt losgelaten schiet het blok terug
-    new_x = 20;
-    new_y = Math.random() * 100 + "px";  
-    selector[i].style.top = new_y + "px";
-    selector[i].style.left = new_x + "px";
-    //laat het blok los wanneer de muis wordt losgelaten
-    document.onmousemove = null; 
-
-    //als er drie keer gecleared wordt dan komt er een extra plaatje
-    if (spawn == 3){
-        spawn = 0;
-    }
-    spawn = spawn + 1;
+function clearPosition(event){
+  console.log("Locatie resetten");
+  //het terug gaan naar de beginpositie die is opgeslagen
+  let element=event.target;
+  element.style.left=event.target.dataset.x+"px";
+  element.style.top=event.target.dataset.y+"px";
+  element.dataset.times++;
+  //wanneer er drie keer een gedachte wordt gesleept dan komt er een functie
+  if(element.dataset.times >=3){
+    alert("Nieuwe gedachte");
+    Visible();
+    element.dataset.times= 0;
   }
+  //verwijderen van waardes om restwaarde te voorkomen
+  element.removeAttribute("data-x");
+  element.removeAttribute("data-y");
+  element.removeEventListener("mousemove",moveBlok);
 }
 
+function Visible(){
+  console.log("test");
+}
 
