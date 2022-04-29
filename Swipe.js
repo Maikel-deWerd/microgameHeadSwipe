@@ -2,9 +2,9 @@
 let selector = document.querySelectorAll(".blok");
 for (let i = 0; i < selector.length; i++) {
   //De funtie voor het blok wordt aangeroepen wanneer er op geklikt wordt
-  selector[i].addEventListener("ontouchstart",savePosition);
+  selector[i].addEventListener("touchstart",savePosition);
   //De funtie voor het blok wordt aangeroepen wanneer de muis losgelaten wordt
-  selector[i].addEventListener("ontouched",clearPosition);
+  selector[i].addEventListener("ontouchend",clearPosition);
 }
   
 function savePosition(event){
