@@ -48,7 +48,7 @@ function clearPosition(event){
   //verwijderen van waardes om restwaarde te voorkomen
   element.removeAttribute("data-x");
   element.removeAttribute("data-y");
-  element.removeEventListener("ontouchmove",moveBlok);
+  element.removeEventListener("ontouchmove",moveBlok); 
 }
 
 var makeVisible = 0;
