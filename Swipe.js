@@ -2,9 +2,9 @@
 let selector = document.querySelectorAll(".blok");
 for (let i = 0; i < selector.length; i++) {
   //De funtie voor het blok wordt aangeroepen wanneer er op geklikt wordt
-  selector[i].addEventListener("mousedown",savePosition);
+  selector[i].addEventListener("ontouchstart",savePosition);
   //De funtie voor het blok wordt aangeroepen wanneer de muis losgelaten wordt
-  selector[i].addEventListener("mouseup",clearPosition);
+  selector[i].addEventListener("ontouched",clearPosition);
 }
   
 function savePosition(event){
@@ -16,7 +16,7 @@ function savePosition(event){
   element.dataset.x=location.left;
   element.dataset.y=location.top;  
   //gaat verder naar deze functie
-  element.addEventListener("mousemove",moveBlok);
+  element.addEventListener("ontouchmove",moveBlok);
 }
 
 function moveBlok(event){  
@@ -48,7 +48,7 @@ function clearPosition(event){
   //verwijderen van waardes om restwaarde te voorkomen
   element.removeAttribute("data-x");
   element.removeAttribute("data-y");
-  element.removeEventListener("mousemove",moveBlok);
+  element.removeEventListener("ontouchmove",moveBlok);
 }
 
 var makeVisible = 0;
@@ -69,7 +69,7 @@ function Visible(){
     document.getElementById ("five").style.visibility = "visible";
   }
   if(makeVisible == 5){
-    console.log("klebberman?")
+    alert("gedachtes vol");
   }
 }
 
