@@ -20,16 +20,13 @@ function savePosition(event) {
 }
 
 function moveBlok(event) {
-    console.log('Coordinates', event.clientX, event.changedTouches[0].clientX)
     console.log("Bewegen element");
     //kijkt naar de beweging van de muis
     let delta_x = event.clientX || event.changedTouches[0].clientX;
     let delta_y = event.clientY || event.changedTouches[0].clientY;
     let element = event.target;
-    console.log(event, event.clientX, event.clientY);
     //nieuwe locatie aangeven waarnaar het plaatje beweegt
     let location = element.getBoundingClientRect();
-    console.log((location.left + delta_x), (location.left + delta_y));
     element.style.left = (location.left + delta_x) + "px";
     element.style.top = (location.top + delta_y) + "px";
 }
@@ -43,7 +40,6 @@ function clearPosition(event) {
     element.dataset.times++;
     //wanneer er drie keer een gedachte wordt gesleept dan komt er een functie
     if (element.dataset.times >= 3) {
-        alert("Nieuwe gedachte");
         Visible();
         element.dataset.times = 0;
     }
@@ -56,7 +52,6 @@ function clearPosition(event) {
 var makeVisible = 0;
 //Testen of je na 3x drukken makeVisible waarden kan aanpassen.
 function Visible() {
-    console.log(makeVisible);
     makeVisible++;
     if (makeVisible == 1) {
         document.getElementById("two").style.visibility = "visible";
