@@ -4,7 +4,7 @@ for (let i = 0; i < selector.length; i++) {
   //De funtie voor het blok wordt aangeroepen wanneer er op geklikt wordt
   selector[i].addEventListener("touchstart",savePosition);
   //De funtie voor het blok wordt aangeroepen wanneer de muis losgelaten wordt
-  selector[i].addEventListener("ontouchend",clearPosition);
+  selector[i].addEventListener("touchend",clearPosition);
 }
   
 function savePosition(event){
@@ -16,7 +16,7 @@ function savePosition(event){
   element.dataset.x=location.left;
   element.dataset.y=location.top;  
   //gaat verder naar deze functie
-  element.addEventListener("ontouchmove",moveBlok);
+  element.addEventListener("touchmove",moveBlok);
 }
 
 function moveBlok(event){  
@@ -48,7 +48,7 @@ function clearPosition(event){
   //verwijderen van waardes om restwaarde te voorkomen
   element.removeAttribute("data-x");
   element.removeAttribute("data-y");
-  element.removeEventListener("ontouchmove",moveBlok); 
+  element.removeEventListener("touchmove",moveBlok); 
 }
 
 var makeVisible = 0;
