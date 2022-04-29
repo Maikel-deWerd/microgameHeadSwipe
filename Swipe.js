@@ -22,8 +22,8 @@ function savePosition(event){
 function moveBlok(event){  
   console.log("Bewegen element"); 
   //kijkt naar de beweging van de muis
-  let delta_x=event.movementX;
-  let delta_y=event.movementY; 
+  let delta_x=event.clientX;
+  let delta_y=event.clientY; 
   let element=event.target;
   console.log(event);
   //nieuwe locatie aangeven waarnaar het plaatje beweegt
