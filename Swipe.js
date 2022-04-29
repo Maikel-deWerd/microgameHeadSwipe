@@ -25,7 +25,7 @@ function moveBlok(event){
   let delta_x=event.movementX;
   let delta_y=event.movementY; 
   let element=event.target;
-  console.log(event.movementX, event.movementY);
+  console.log(event);
   //nieuwe locatie aangeven waarnaar het plaatje beweegt
   let location=element.getBoundingClientRect();  
   console.log((location.left+delta_x),(location.left+delta_y));
